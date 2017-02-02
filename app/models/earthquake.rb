@@ -1,4 +1,6 @@
 class Earthquake < ApplicationRecord
+  include Feelable
+
   self.primary_key = 'id'
 
   validate :ensure_felt_in_los_angeles
@@ -19,10 +21,6 @@ class Earthquake < ApplicationRecord
 
   def ensure_felt_in_los_angeles
     errors.add(:magnitude, 'must be felt in Los Angeles') unless
-      felt_in_los_angeles?
-  end
-
-  def felt_in_los_angeles?
-    (magnitude * 100) > distance
+      felt_in_los_angeles?(magnitude, distance)
   end
 end
