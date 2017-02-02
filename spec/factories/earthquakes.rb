@@ -8,6 +8,10 @@ FactoryGirl.define do
     created_at { occurred_at }
     updated_at { occurred_at + rand(0..5).minutes + rand(0..59).seconds }
 
+    trait :epoch do
+      occurred_at { Time.at(0) }
+    end
+
     trait :today do
       occurred_at { 10.minutes.ago }
     end
