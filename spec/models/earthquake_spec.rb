@@ -60,4 +60,12 @@ RSpec.describe Earthquake, type: :model do
       end
     end
   end
+
+  describe '.ensure_felt_in_los_angeles' do
+    let(:not_felt) { build(:earthquake, :not_felt) }
+
+    it 'should not save when the earthquake was not felt in Los Angeles' do
+      expect(not_felt).to be_invalid
+    end
+  end
 end
