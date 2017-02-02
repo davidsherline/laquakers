@@ -1,0 +1,7 @@
+inherit_from: ../.rubocop.yml
+
+Rails:
+  Enabled: true
+
+Style/DocumentationMethod:
+  Enabled: false
