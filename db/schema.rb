@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202043830) do
+ActiveRecord::Schema.define(version: 20170203212417) do
 
   create_table "earthquakes", id: false, force: :cascade do |t|
     t.string   "id",                                  null: false
     t.string   "location",                            null: false
     t.decimal  "magnitude",   precision: 3, scale: 2, null: false
     t.decimal  "distance",    precision: 6, scale: 3, null: false
-    t.datetime "occurred_at",                         null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.date     "occurred_on"
     t.index ["id"], name: "index_earthquakes_on_id", unique: true
-    t.index ["occurred_at"], name: "index_earthquakes_on_occurred_at"
+    t.index ["occurred_on"], name: "index_earthquakes_on_occurred_on"
   end
 
 end

@@ -9,8 +9,8 @@ RSpec.describe Earthquake, type: :model do
         create_list(:earthquake, 2)
       end
 
-      it 'should return the occurred_at date for the earliest earthquake' do
-        expect(Earthquake.earliest_on).to eq(earliest.occurred_at.to_date)
+      it 'should return the occurred_on date for the earliest earthquake' do
+        expect(Earthquake.earliest_on).to eq(earliest.occurred_on)
       end
     end
 
@@ -29,8 +29,8 @@ RSpec.describe Earthquake, type: :model do
         create_list(:earthquake, 2)
       end
 
-      it 'should return the occurred_at date for the latest earthquake' do
-        expect(Earthquake.latest_on).to eq(latest.occurred_at.to_date)
+      it 'should return the occurred_on date for the latest earthquake' do
+        expect(Earthquake.latest_on).to eq(latest.occurred_on)
       end
     end
 

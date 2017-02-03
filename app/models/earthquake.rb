@@ -6,11 +6,11 @@ class Earthquake < ApplicationRecord
   validate :ensure_felt_in_los_angeles
 
   def self.earliest_on
-    order('occurred_at ASC').pluck('occurred_at').first.try(:to_date)
+    order('occurred_on ASC').pluck('occurred_on').first
   end
 
   def self.latest_on
-    order('occurred_at DESC').pluck('occurred_at').first.try(:to_date)
+    order('occurred_on DESC').pluck('occurred_on').first
   end
 
   def self.last_updated_at

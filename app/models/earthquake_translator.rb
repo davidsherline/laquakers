@@ -30,7 +30,7 @@ class EarthquakeTranslator
       location: location,
       magnitude: magnitude,
       distance: distance,
-      occurred_at: occurred_at,
+      occurred_on: occurred_on,
       created_at: created_at,
       updated_at: updated_at
     }
@@ -52,12 +52,12 @@ class EarthquakeTranslator
     @distance ||= Haversine.distance(LA_COORDINATES, coordinates).to_miles
   end
 
-  def occurred_at
-    @time.to_time
+  def occurred_on
+    @time.in_time_zone("Pacific Time (US & Canada)").to_date
   end
 
   def created_at
-    occurred_at
+    @time.to_time
   end
 
   def updated_at
