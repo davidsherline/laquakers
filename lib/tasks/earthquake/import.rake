@@ -9,12 +9,17 @@ namespace :earthquake do
     csv_file = open(csv_url, 'r:utf-8')
     csv_options = { chunk_size: 250 }
 
+    puts 'Beginning import of CSV data from:'
+    puts csv_url
+
     SmarterCSV.process(csv_file, csv_options) do |chunk|
       EarthquakeImportJob.perform_later(chunk)
     end
 
+    puts 'Import complete.'
+
     end_time = Time.now
-    duration = (start_time - end_time) / 1.minute
+    duration = (end_time - start_time) / 1.minute
     log.info "Import finished at #{end_time}."
     log.info "Import duration was #{duration} minutes."
     log.close
