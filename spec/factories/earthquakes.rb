@@ -16,6 +16,10 @@ FactoryGirl.define do
       created_at { 10.minutes.ago }
     end
 
+    trait :yesterday do
+      created_at { 1.day.ago }
+    end
+
     trait :not_felt do
       distance { magnitude * 200 }
     end
