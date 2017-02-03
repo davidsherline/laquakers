@@ -3,7 +3,7 @@ class EarthquakeImportJob < ApplicationJob
 
   def perform(csv_chunk)
     csv_chunk.each do |row|
-      EarthquakeTranslator.new(row).to_earthquake.save
+      EarthquakeTranslator.new(row).to_earthquake!
     end
   end
 end

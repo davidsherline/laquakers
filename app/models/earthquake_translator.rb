@@ -18,6 +18,10 @@ class EarthquakeTranslator
     earthquake
   end
 
+  def to_earthquake!
+    to_earthquake.save
+  end
+
   private
 
   def to_hash
