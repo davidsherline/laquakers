@@ -6,10 +6,10 @@ class SearchController < ApplicationController
   private
 
   def from
-    params[:from].try(:to_date) || 30.days.ago
+    params.fetch(:from, 30.days.ago).to_date
   end
 
   def to
-    params[:to].try(:to_date) || Date.today
+    params.fetch(:to, Date.today).to_date
   end
 end
