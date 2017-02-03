@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :csv_row, class: Hash do
     skip_create
 
-    ignore do
+    transient do
       time '2017-02-02T02:35:55.670Z'
       latitude 34.3135
       longitude -118.1071667
