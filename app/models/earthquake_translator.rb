@@ -2,8 +2,6 @@ class EarthquakeTranslator
   PLACE_SEPARATOR_REGEX = / of /
   LA_COORDINATES = [34.0522, -118.2437].freeze
 
-  attr_reader :id
-
   def initialize(args)
     @time = args[:time]
     @latitude = args[:latitude]
@@ -13,6 +11,14 @@ class EarthquakeTranslator
     @updated = args[:updated]
     @place = args[:place]
   end
+
+  def to_earthquake
+    earthquake = Earthquake.find_or_initialize_by(id: id)
+    earthquake.assign_attributes(to_hash)
+    earthquake
+  end
+
+  private
 
   def to_hash
     {
@@ -24,6 +30,10 @@ class EarthquakeTranslator
       created_at: created_at,
       updated_at: updated_at
     }
+  end
+
+  def id
+    @id.to_s
   end
 
   def location
@@ -49,8 +59,6 @@ class EarthquakeTranslator
   def updated_at
     @updated.to_time
   end
-
-  private
 
   def coordinates
     [@latitude.to_f, @longitude.to_f]

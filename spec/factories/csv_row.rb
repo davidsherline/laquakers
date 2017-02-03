@@ -27,6 +27,12 @@ FactoryGirl.define do
       magSource 'ci'
     end
 
+    trait :invalid do
+      latitude 59.9179
+      longitude -151.4579
+      mag 1
+    end
+
     initialize_with do
       {
         time: time,
