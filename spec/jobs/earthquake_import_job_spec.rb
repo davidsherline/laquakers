@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe EarthquakesImportJob, type: :job do
+RSpec.describe EarthquakeImportJob, type: :job do
   describe '.perform' do
     let(:valid_csv_row) { build(:csv_row) }
     let(:invalid_csv_row) { build(:csv_row, :invalid) }
@@ -8,14 +8,14 @@ RSpec.describe EarthquakesImportJob, type: :job do
     context 'with a new record' do
       context 'with valid data' do
         it 'should create an Earthquake' do
-          expect(EarthquakesImportJob.perform_now([valid_csv_row])).to be true
+          expect(EarthquakeImportJob.perform_now([valid_csv_row])).to be true
           expect(Earthquake.count).to eq(1)
         end
       end
 
       context 'with invalid data' do
         it 'should not create an Earthquake' do
-          expect(EarthquakesImportJob.perform_now([invalid_csv_row]))
+          expect(EarthquakeImportJob.perform_now([invalid_csv_row]))
             .to be false
           expect(Earthquake.count).to eq(0)
         end
@@ -24,12 +24,12 @@ RSpec.describe EarthquakesImportJob, type: :job do
 
     context 'with an old record' do
       before(:each) do
-        EarthquakesImportJob.perform_now([valid_csv_row])
+        EarthquakeImportJob.perform_now([valid_csv_row])
       end
 
       context 'with the same data' do
         it 'should update the Earthquake' do
-          expect(EarthquakesImportJob.perform_now([valid_csv_row])).to be true
+          expect(EarthquakeImportJob.perform_now([valid_csv_row])).to be true
           expect(Earthquake.count).to eq(1)
         end
       end
@@ -40,7 +40,7 @@ RSpec.describe EarthquakesImportJob, type: :job do
           let(:updated_csv_row) { build(:csv_row, updated: now) }
 
           it 'should update the Earthquake' do
-            expect(EarthquakesImportJob.perform_now([updated_csv_row]))
+            expect(EarthquakeImportJob.perform_now([updated_csv_row]))
               .to be true
             expect(Earthquake.count).to eq(1)
             expect(Earthquake.first.updated_at).to eq(now)
@@ -52,7 +52,7 @@ RSpec.describe EarthquakesImportJob, type: :job do
           let(:invalid_csv_row) { build(:csv_row, :invalid, mag: 1) }
 
           it 'should not update the Earthquake' do
-            expect(EarthquakesImportJob.perform_now([invalid_csv_row]))
+            expect(EarthquakeImportJob.perform_now([invalid_csv_row]))
               .to be false
             expect(Earthquake.count).to eq(1)
             expect(Earthquake.first.magnitude).to eq(2)
@@ -63,7 +63,7 @@ RSpec.describe EarthquakesImportJob, type: :job do
 
     context 'with one valid and one invalid record' do
       before(:each) do
-        EarthquakesImportJob.perform_now([valid_csv_row, invalid_csv_row])
+        EarthquakeImportJob.perform_now([valid_csv_row, invalid_csv_row])
       end
 
       it 'should only create a valid record' do

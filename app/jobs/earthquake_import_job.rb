@@ -1,4 +1,4 @@
-class EarthquakesImportJob < ApplicationJob
+class EarthquakeImportJob < ApplicationJob
   queue_as :default
 
   def perform(csv_chunk)
