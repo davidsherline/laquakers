@@ -13,8 +13,6 @@ RSpec.describe Earthquake, type: :model do
 
     context 'when the date today is provided for both from and to' do
       it 'should return only records from today' do
-        p today
-        p yesterday
         expect(Earthquake.between(today, today).count).to eq(15)
       end
     end
