@@ -53,7 +53,7 @@ class EarthquakeTranslator
   end
 
   def occurred_on
-    @time.in_time_zone("Pacific Time (US & Canada)").to_date
+    @time.in_time_zone('Pacific Time (US & Canada)').to_date
   end
 
   def created_at
