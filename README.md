@@ -1,4 +1,4 @@
-# LA Quake# LA Quakers
+# LA Quakers
 
 This application implements thee challenge found [in this gist](https://gist.github.com/rafiamafia/6138da6e3ae1e80cc681e99f9c238ea1). It consists of a search page which queries a database for the first ten earthquakes which could be felt in Los Angeles in a given date range.
 
