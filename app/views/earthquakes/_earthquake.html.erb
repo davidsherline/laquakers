@@ -1,0 +1,6 @@
+<tr>
+  <td><%= time_tag(earthquake.created_at.in_time_zone('Pacific Time (US & Canada)')) %></td>
+  <td><%= earthquake.location %></td>
+  <td><%= earthquake.magnitude %></td>
+  <td><%= earthquake.distance %> miles</td>
+</tr>

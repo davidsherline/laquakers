@@ -1,0 +1,17 @@
+<%= form_tag('/', method: :get) do %>
+  <%= label_tag(:from, 'from:') %>
+  <div class="input-group">
+    <%= text_field_tag(:from, @from, data: { date_start_date: @start_date, date_end_date: @to }) %>
+    <div class="input-group-addon">
+       <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+    </div>
+  </div>
+  <%= label_tag(:to, 'to:') %>
+  <div class="input-group">
+    <%= text_field_tag(:to, @to, data: { date_start_date: @from, date_end_date:  @end_date }) %>
+    <div class="input-group-addon">
+       <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+    </div>
+  </div>
+  <%= submit_tag('Submit') %>
+<% end %>
