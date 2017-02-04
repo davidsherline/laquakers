@@ -6,6 +6,7 @@ This application implements thee challenge found [in this gist](https://gist.git
 
 1. Clone this repo
 2. Run `bundle install`
+3. Run `bin/rails db:migrate`
 3. Run `bin/rails earthquake:import` (it may take a full minute, see Import Discussion below)
 4. Run `bin/rails s` to start the Rails server
 5. Visit [http://localhost:3000](http://localhost:3000)
