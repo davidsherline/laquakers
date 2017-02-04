@@ -9,6 +9,8 @@ $(document).on "turbolinks:load", ->
   $("#to").datepicker(datepickerOptions)
   .on "hide", (e) ->
     $("#from").datepicker("setEndDate", e.date)
+  $("#submit").on "click", ->
+    $("#search").submit()
 
 datepickerOptions =
   autoclose: true
