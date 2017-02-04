@@ -1,17 +1,11 @@
-<%= form_tag('/', method: :get, enforce_utf8: false, id: 'search', remote: true) do %>
-  <%= label_tag(:from, 'from:') %>
+<%= form_tag('/', method: :get, enforce_utf8: false, id: 'search', class: 'form-inline my-2 my-lg-0', remote: true) do %>
   <div class="input-group">
-    <%= text_field_tag(:from, @from, data: { date_start_date: @start_date, date_end_date: @to }) %>
-    <div class="input-group-addon">
-       <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-    </div>
+    <span class="input-group-addon" id="addon-from">From</span>
+    <%= text_field_tag(:from, @from, class: 'form-control mr-sm-2', data: { date_start_date: @start_date, date_end_date: @to }) %>
   </div>
-  <%= label_tag(:to, 'to:') %>
   <div class="input-group">
-    <%= text_field_tag(:to, @to, data: { date_start_date: @from, date_end_date:  @to }) %>
-    <div class="input-group-addon">
-       <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-    </div>
+    <span class="input-group-addon" id="addon-to">To</span>
+    <%= text_field_tag(:to, @to, class: 'form-control mr-sm-2', data: { date_start_date: @from, date_end_date:  @to }) %>
   </div>
 <% end %>
-<%= button_tag('Submit', id: 'submit') %>
+<%= button_tag('Search', id: 'submit', class: 'btn btn-outline-success my-2 my-sm-0') %>
