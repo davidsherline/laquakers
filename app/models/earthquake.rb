@@ -6,7 +6,7 @@ class Earthquake < ApplicationRecord
   validate :ensure_felt_in_los_angeles
 
   scope :between, ->(from, to) { where(occurred_on: from..to) }
-  scope :first_ten, -> { order('occurred_on ASC').limit(10) }
+  scope :first_ten, -> { order('created_at ASC').limit(10) }
 
   def self.earliest_on
     order('occurred_on ASC').pluck('occurred_on').first
