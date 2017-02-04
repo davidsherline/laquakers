@@ -1,18 +1,11 @@
-<% if @earthquakes.any? %>
-  <table class="table">
-    <thead class="thead-inverse">
-      <th>Time</th>
-      <th>Location</th>
-      <th>Magnitude</th>
-      <th>Distance</th>
-    </thead>
-    <tbody id="earthquakes">
-      <%= render @earthquakes %>
-    </tbody>
-  </table>
-<% else %>
-  <div class="alert alert-info" role="alert">
-    <span class="glyphicon glyphicon-thumbs-up">
-    <strong>Great news!</strong> There were no earthquakes felt in LA during your search. Try a different date range.
-  </div>
-<% end %>
+<table class="table">
+  <thead class="thead-inverse">
+    <th>Time</th>
+    <th>Location</th>
+    <th>Magnitude</th>
+    <th>Distance</th>
+  </thead>
+  <tbody id="earthquakes">
+    <%= render @earthquakes %>
+  </tbody>
+</table>
