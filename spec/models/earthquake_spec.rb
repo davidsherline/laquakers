@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Earthquake, type: :model do
   describe '.between' do
-    let(:today) { Date.today }
-    let(:yesterday) { Date.yesterday }
+    let(:today) { Date.current }
+    let(:yesterday) { Date.current - 1.day }
 
     before(:each) do
       create_list(:earthquake, 15, occurred_on: today)
@@ -13,6 +13,8 @@ RSpec.describe Earthquake, type: :model do
 
     context 'when the date today is provided for both from and to' do
       it 'should return only records from today' do
+        p today
+        p yesterday
         expect(Earthquake.between(today, today).count).to eq(15)
       end
     end
